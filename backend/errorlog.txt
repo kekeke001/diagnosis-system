@@ -1,0 +1,925 @@
+2025-01-03 17:31:01,052 - app - ERROR - Exception on /login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'diagnosis.users' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 69, in login
+    user = User.query.filter_by(username=username).first()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2728, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.users' doesn't exist")
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.password_hash AS users_password_hash, users.email AS users_email, users.created_at AS users_created_at, users.last_login AS users_last_login, users.`role` AS users_role 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'username_1': 'admin', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-03 17:37:53,062 - app - ERROR - Exception on /login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'diagnosis.users' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 69, in login
+    #     user = User.query.filter_by(username=username).first()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2728, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.users' doesn't exist")
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.password_hash AS users_password_hash, users.email AS users_email, users.created_at AS users_created_at, users.last_login AS users_last_login, users.`role` AS users_role 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'username_1': 'admin', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-03 17:41:05,893 - app - ERROR - Exception on /login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'diagnosis.users' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 69, in login
+    user = db.session.query(User).filter_by(username=username).first()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2728, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.users' doesn't exist")
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.password_hash AS users_password_hash, users.email AS users_email, users.created_at AS users_created_at, users.last_login AS users_last_login, users.`role` AS users_role 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'username_1': 'admin', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-03 18:52:46,557 - app - ERROR - Error during login: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.users' doesn't exist")
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.password_hash AS users_password_hash, users.email AS users_email, users.created_at AS users_created_at, users.last_login AS users_last_login, users.`role` AS users_role 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'username_1': 'admin', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'diagnosis.users' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 69, in login
+    user = db.session.query(User).filter_by(username=username).first()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2728, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.users' doesn't exist")
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.password_hash AS users_password_hash, users.email AS users_email, users.created_at AS users_created_at, users.last_login AS users_last_login, users.`role` AS users_role 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'username_1': 'admin', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-03 19:11:26,988 - app - WARNING - User 'admin' not found.
+2025-01-03 19:13:45,745 - app - WARNING - User 'admin' not found.
+2025-01-03 19:14:07,175 - app - WARNING - User 'admin' not found.
+2025-01-03 19:14:07,430 - app - WARNING - User 'admin' not found.
+2025-01-03 19:14:07,645 - app - WARNING - User 'admin' not found.
+2025-01-03 19:14:07,974 - app - WARNING - User 'admin' not found.
+2025-01-03 19:17:54,167 - app - WARNING - User 'admin' not found.
+2025-01-03 19:18:02,185 - app - WARNING - User 'admin' not found.
+2025-01-03 19:18:30,766 - app - WARNING - User 'admin' not found.
+2025-01-03 19:20:18,064 - app - WARNING - User 'admin' not found.
+2025-01-03 19:20:23,855 - app - WARNING - User 'admin' not found.
+2025-01-03 19:21:31,885 - app - WARNING - User 'admin' not found.
+2025-01-03 19:23:23,683 - app - WARNING - User 'admin' not found.
+2025-01-03 19:24:47,336 - app - WARNING - User 'admin' not found.
+2025-01-03 19:24:53,984 - app - WARNING - User 'admin' not found.
+2025-01-03 19:26:55,494 - app - WARNING - User 'admin' not found.
+2025-01-03 19:27:02,805 - app - WARNING - User 'admin' not found.
+2025-01-03 19:35:05,060 - app - WARNING - User 'admin' not found.
+2025-01-03 19:39:29,067 - app - WARNING - User 'admin' not found.
+2025-01-03 19:39:35,601 - app - WARNING - User 'admin' not found.
+2025-01-03 19:43:03,583 - app - WARNING - User 'admin' not found.
+2025-01-03 19:45:10,474 - app - WARNING - User 'admin' not found.
+2025-01-03 19:48:07,108 - app - WARNING - User 'admin' not found.
+2025-01-03 19:48:18,033 - app - WARNING - User 'admin' not found.
+2025-01-03 19:50:04,433 - app - WARNING - User 'admin' not found.
+2025-01-03 19:59:15,946 - app - WARNING - User 'admin' not found.
+2025-01-03 20:00:31,479 - app - WARNING - User 'admin' not found.
+2025-01-03 20:00:35,943 - app - WARNING - User 'admin' not found.
+2025-01-03 20:01:29,850 - app - WARNING - User 'admin' not found.
+2025-01-03 20:02:20,105 - app - WARNING - User 'admin' not found.
+2025-01-03 20:03:49,131 - app - WARNING - User 'admin' not found.
+2025-01-03 20:03:53,299 - app - WARNING - User 'admin' not found.
+2025-01-03 20:03:54,729 - app - WARNING - User 'admin' not found.
+2025-01-03 20:03:54,773 - app - WARNING - User 'admin' not found.
+2025-01-03 20:03:55,301 - app - WARNING - User 'admin' not found.
+2025-01-03 20:03:55,814 - app - WARNING - User 'admin' not found.
+2025-01-03 20:03:56,034 - app - WARNING - User 'admin' not found.
+2025-01-03 20:04:08,618 - app - WARNING - User 'admin' not found.
+2025-01-03 20:05:18,276 - app - WARNING - User 'admin' not found.
+2025-01-03 20:07:02,571 - app - WARNING - User 'admin' not found.
+2025-01-03 20:07:03,304 - app - WARNING - User 'admin' not found.
+2025-01-03 20:11:30,089 - app - WARNING - User 'admin' not found.
+2025-01-03 20:11:31,777 - app - WARNING - User 'admin' not found.
+2025-01-04 21:24:02,627 - app - WARNING - User 'admin' not found.
+2025-01-04 21:24:53,438 - app - ERROR - Registration failed: (pymysql.err.IntegrityError) (1048, "Column 'role' cannot be null")
+[SQL: INSERT INTO `Users` (username, password_hash, email, created_at, last_login, `role`) VALUES (%(username)s, %(password_hash)s, %(email)s, %(created_at)s, %(last_login)s, %(role)s)]
+[parameters: {'username': 'admin', 'password_hash': 'scrypt:32768:8:1$2b3872Ks1isWT5Fv$99b9d30e6bebb038d103af03d585bf728778eee3811b63d2c5805294a21606d0ad3ca202423d0ed42eed6f8ff81974c5865abeb99a785db14650ecd66bfd3748', 'email': '853636254@qq.com', 'created_at': datetime.datetime(2025, 1, 4, 13, 24, 53, 436846), 'last_login': None, 'role': None}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'role' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 107, in register
+    db.session.commit()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2028, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 4352, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 4448, in _flush
+    flush_context.execute()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1048, "Column 'role' cannot be null")
+[SQL: INSERT INTO `Users` (username, password_hash, email, created_at, last_login, `role`) VALUES (%(username)s, %(password_hash)s, %(email)s, %(created_at)s, %(last_login)s, %(role)s)]
+[parameters: {'username': 'admin', 'password_hash': 'scrypt:32768:8:1$2b3872Ks1isWT5Fv$99b9d30e6bebb038d103af03d585bf728778eee3811b63d2c5805294a21606d0ad3ca202423d0ed42eed6f8ff81974c5865abeb99a785db14650ecd66bfd3748', 'email': '853636254@qq.com', 'created_at': datetime.datetime(2025, 1, 4, 13, 24, 53, 436846), 'last_login': None, 'role': None}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-01-04 21:25:15,775 - app - ERROR - Registration failed: (pymysql.err.IntegrityError) (1048, "Column 'role' cannot be null")
+[SQL: INSERT INTO `Users` (username, password_hash, email, created_at, last_login, `role`) VALUES (%(username)s, %(password_hash)s, %(email)s, %(created_at)s, %(last_login)s, %(role)s)]
+[parameters: {'username': 'admin', 'password_hash': 'scrypt:32768:8:1$MsiuRgIp2s511gPE$8287c11f987bc7a9b607403dea9104ef1f8824966ec94cbf2339e53430a0edee9453a60f5e55727a262d46d3dbfa5210856b232651a5704e815f4c93526638c5', 'email': '853636254@qq.com', 'created_at': datetime.datetime(2025, 1, 4, 13, 25, 15, 774055), 'last_login': None, 'role': None}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'role' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 107, in register
+    db.session.commit()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2028, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 4352, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 4448, in _flush
+    flush_context.execute()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1048, "Column 'role' cannot be null")
+[SQL: INSERT INTO `Users` (username, password_hash, email, created_at, last_login, `role`) VALUES (%(username)s, %(password_hash)s, %(email)s, %(created_at)s, %(last_login)s, %(role)s)]
+[parameters: {'username': 'admin', 'password_hash': 'scrypt:32768:8:1$MsiuRgIp2s511gPE$8287c11f987bc7a9b607403dea9104ef1f8824966ec94cbf2339e53430a0edee9453a60f5e55727a262d46d3dbfa5210856b232651a5704e815f4c93526638c5', 'email': '853636254@qq.com', 'created_at': datetime.datetime(2025, 1, 4, 13, 25, 15, 774055), 'last_login': None, 'role': None}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-01-06 11:14:04,399 - app - WARNING - User 'admin2' not found.
+2025-01-06 11:24:24,644 - app - WARNING - User 'admin' not found.
+2025-01-06 11:32:03,185 - app - ERROR - Error during login: name 'datetime' is not defined
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 80, in login
+    user.last_login = datetime.utcnow()  # 使用 UTC 时间
+NameError: name 'datetime' is not defined
+2025-01-06 11:32:03,258 - app - ERROR - Error during login: name 'datetime' is not defined
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 80, in login
+    user.last_login = datetime.utcnow()  # 使用 UTC 时间
+NameError: name 'datetime' is not defined
+2025-01-06 13:58:08,961 - app - WARNING - Username 'user2' already exists.
+2025-01-06 13:58:19,498 - app - WARNING - Username 'user2' already exists.
+2025-01-06 13:58:52,989 - app - WARNING - Username 'user2' already exists.
+2025-01-06 13:59:09,070 - app - WARNING - Username 'user2' already exists.
+2025-01-06 14:00:58,149 - app - WARNING - Username 'user2' already exists.
+2025-01-06 14:01:18,440 - app - WARNING - Username 'user2' already exists.
+2025-01-06 14:02:16,443 - app - WARNING - Username 'user2' already exists.
+2025-01-06 14:04:44,440 - app - WARNING - Invalid password for user 'admin1'.
+2025-01-06 14:06:09,439 - app - WARNING - Username 'admin1' already exists.
+2025-01-06 14:06:23,368 - app - WARNING - Username 'admin1' already exists.
+2025-01-06 15:44:05,151 - app - WARNING - Invalid password for user 'admin'.
+2025-01-06 15:44:05,500 - app - WARNING - Invalid password for user 'admin'.
+2025-01-06 16:17:12,528 - app - ERROR - Error during login: name 'timedelta' is not defined
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 89, in login
+    'exp': datetime.utcnow() + timedelta(hours=1)  # 设置 token 的过期时间
+NameError: name 'timedelta' is not defined
+2025-01-06 16:17:53,191 - app - ERROR - Error during login: name 'timedelta' is not defined
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 89, in login
+    'exp': datetime.utcnow() + timedelta(hours=1)  # 设置 token 的过期时间
+NameError: name 'timedelta' is not defined
+2025-01-06 16:25:26,558 - app - ERROR - Error during login: name 'timedelta' is not defined
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 89, in login
+    'exp': datetime.utcnow() + timedelta(hours=1)  # 设置 token 的过期时间
+NameError: name 'timedelta' is not defined
+2025-01-06 16:25:38,091 - app - ERROR - Error during login: name 'timedelta' is not defined
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 89, in login
+    'exp': datetime.utcnow() + timedelta(hours=1)  # 设置 token 的过期时间
+NameError: name 'timedelta' is not defined
+2025-01-06 16:27:25,315 - app - ERROR - Error during login: Object of type bytes is not JSON serializable
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 98, in login
+    return jsonify({"message": "登录成功", "token": token}), 200
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.8/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.8/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.8/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 121, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type bytes is not JSON serializable
+2025-01-06 17:55:12,366 - app - ERROR - Model upload failed: name 'secure_filename' is not defined
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 246, in upload_model
+    filename = secure_filename(model.filename)
+NameError: name 'secure_filename' is not defined
+2025-01-06 17:56:23,171 - app - ERROR - Model upload failed: name 'secure_filename' is not defined
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 246, in upload_model
+    filename = secure_filename(model.filename)
+NameError: name 'secure_filename' is not defined
+2025-01-06 18:23:20,605 - app - ERROR - Error fetching models: 'Model' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 291, in get_models
+    model_data = [{
+  File "/root/My_Project/backend/app.py", line 294, in <listcomp>
+    'size': model.size,
+AttributeError: 'Model' object has no attribute 'size'
+2025-01-06 18:24:30,371 - app - ERROR - Error fetching models: 'Model' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 291, in get_models
+    model_data = [{
+  File "/root/My_Project/backend/app.py", line 294, in <listcomp>
+    'size': model.size,
+AttributeError: 'Model' object has no attribute 'size'
+2025-01-06 18:24:33,911 - app - ERROR - Error fetching models: 'Model' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 291, in get_models
+    model_data = [{
+  File "/root/My_Project/backend/app.py", line 294, in <listcomp>
+    'size': model.size,
+AttributeError: 'Model' object has no attribute 'size'
+2025-01-06 18:24:37,805 - app - ERROR - Error fetching models: 'Model' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 291, in get_models
+    model_data = [{
+  File "/root/My_Project/backend/app.py", line 294, in <listcomp>
+    'size': model.size,
+AttributeError: 'Model' object has no attribute 'size'
+2025-01-06 18:25:26,012 - app - ERROR - Model upload failed: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 234, in upload_model
+    model = request.files.get('model')
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/utils.py", line 107, in __get__
+    value = self.fget(obj)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 494, in files
+    self._load_form_data()
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 115, in _load_form_data
+    super()._load_form_data()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 268, in _load_form_data
+    data = parser.parse(
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/formparser.py", line 242, in parse
+    return parse_func(stream, mimetype, content_length, options)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/formparser.py", line 267, in _parse_multipart
+    form, files = parser.parse(stream, boundary, content_length)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/formparser.py", line 368, in parse
+    for data in _chunk_iter(stream.read, self.buffer_size):
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/formparser.py", line 423, in _chunk_iter
+    data = read(size)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wsgi.py", line 562, in readinto
+    self.on_disconnect()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wsgi.py", line 499, in on_disconnect
+    raise ClientDisconnected()
+werkzeug.exceptions.ClientDisconnected: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+2025-01-06 18:27:20,024 - app - ERROR - Model upload failed: 'size' is an invalid keyword argument for Model
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 253, in upload_model
+    new_model = Model(
+  File "<string>", line 4, in __init__
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/state.py", line 572, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/decl_base.py", line 2177, in _declarative_constructor
+    raise TypeError(
+TypeError: 'size' is an invalid keyword argument for Model
+2025-01-06 18:32:48,188 - app - ERROR - Model upload failed: 'size' is an invalid keyword argument for Model
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 252, in upload_model
+    new_model = Model(
+  File "<string>", line 4, in __init__
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/state.py", line 572, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/decl_base.py", line 2177, in _declarative_constructor
+    raise TypeError(
+TypeError: 'size' is an invalid keyword argument for Model
+2025-01-06 18:39:06,049 - app - ERROR - Error fetching models: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.model' doesn't exist")
+[SQL: SELECT model.model_id AS model_model_id, model.model_name AS model_model_name, model.size AS model_size, model.model_path AS model_model_path, model.upload_time AS model_upload_time 
+FROM model ORDER BY model.upload_time DESC 
+ LIMIT %(param_1)s, %(param_2)s]
+[parameters: {'param_1': 0, 'param_2': 5}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'diagnosis.model' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 280, in get_models
+    models = models_query.offset((page - 1) * page_size).limit(page_size).all()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.model' doesn't exist")
+[SQL: SELECT model.model_id AS model_model_id, model.model_name AS model_model_name, model.size AS model_size, model.model_path AS model_model_path, model.upload_time AS model_upload_time 
+FROM model ORDER BY model.upload_time DESC 
+ LIMIT %(param_1)s, %(param_2)s]
+[parameters: {'param_1': 0, 'param_2': 5}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-06 18:42:00,865 - app - ERROR - Error fetching models: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.model' doesn't exist")
+[SQL: SELECT model.model_id AS model_model_id, model.model_name AS model_model_name, model.size AS model_size, model.model_path AS model_model_path, model.upload_time AS model_upload_time 
+FROM model ORDER BY model.upload_time DESC 
+ LIMIT %(param_1)s, %(param_2)s]
+[parameters: {'param_1': 0, 'param_2': 5}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'diagnosis.model' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 280, in get_models
+    models = models_query.offset((page - 1) * page_size).limit(page_size).all()
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'diagnosis.model' doesn't exist")
+[SQL: SELECT model.model_id AS model_model_id, model.model_name AS model_model_name, model.size AS model_size, model.model_path AS model_model_path, model.upload_time AS model_upload_time 
+FROM model ORDER BY model.upload_time DESC 
+ LIMIT %(param_1)s, %(param_2)s]
+[parameters: {'param_1': 0, 'param_2': 5}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-06 18:54:45,908 - app - ERROR - Error deleting model 6: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/root/My_Project/backend/app.py", line 311, in delete_model
+    model = Model.query.get_or_404(model_id)
+  File "/usr/local/lib/python3.8/dist-packages/flask_sqlalchemy/query.py", line 33, in get_or_404
+    abort(404, description=description)
+  File "/usr/local/lib/python3.8/dist-packages/flask/helpers.py", line 272, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/exceptions.py", line 863, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-01-06 19:00:32,166 - app - WARNING - Model 'cnn_linear_model.pkl' already exists.
+2025-01-06 19:01:14,473 - app - WARNING - Model 'cnn_linear_model.pkl' already exists.
+2025-01-06 19:03:31,964 - app - WARNING - Model 'cnn_linear_model.pkl' already exists.
+2025-01-06 19:05:12,969 - app - WARNING - Model 'cnn_linear_model.pkl' already exists.
